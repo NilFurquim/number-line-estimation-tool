@@ -67,21 +67,30 @@
             canvas.height = window.innerHeight*0.3;
         //}, false);
         
-        canvas.addEventListener("mousedown", () => {
+        canvas.addEventListener("mousedown", startDrawing);
+        canvas.addEventListener("touchstart", startDrawing);
+
+        function startDrawing() {
             drawing = true;
             context.beginPath();
-        });
+        }
 
-        canvas.addEventListener("mousemove", (event) => {
+        canvas.addEventListener("mousemove", moveDrawing);
+        canvas.addEventListener("touchmove", moveDrawing);
+        
+        function moveDrawing(event) {
             if (!drawing) return;
             const x = event.clientX - canvas.getBoundingClientRect().left;
             const y = event.clientY - canvas.getBoundingClientRect().top;
             context.lineTo(x, y);
             context.stroke();
             currentLine.push({ x, y }); // Store the point in the current line
-        });
+        }
 
-        canvas.addEventListener("mouseup", () => {
+        canvas.addEventListener("mouseup", stopDrawing);
+        canvas.addEventListener("touchend", stopDrawing);
+        
+        function stopDrawing() {
             drawing = false;
             context.closePath();
             if (currentLine.length > 0) {
@@ -89,13 +98,16 @@
                 currentLine = []; // Reset the current line
                 displayIntersections(); // Show intersection positions on mouse up
             }
-        });
+        }
         
         
-        canvas.addEventListener("mouseleave", () => {
+        canvas.addEventListener("mouseleave", leaveDrawing);
+        canvas.addEventListener("touchcancel", leaveDrawing);
+        
+        function leaveDrawing () {
             drawing = false;
             displayStoredLines(); // Show the stored lines on mouse leave
-        });
+        }
         
         // Function to clear the canvas and the stored lines
         function clearCanvas() {
