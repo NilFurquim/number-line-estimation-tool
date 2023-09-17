@@ -10,7 +10,7 @@ const Config: React.FC = () => {
           {/* Add your configuration options here */}
           <div className="mb-4">
             <label htmlFor="config-input-tester-id" className="block text-gray-700 font-bold mb-2">
-              Type a test id for future reference (don't type the person's name, id or any other identifiable information):
+              Type a test id for future reference (do not type the name, id or any other identifiable information):
             </label>
             <input
               type="text"
