@@ -19,11 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <main>
-          <nav>
-            <Link href="/">
+          <nav className="flex justify-evenly items-center p-4 mb-8">
+            <Link href="/" className="hover:font-bold">
               Home
             </Link>
-            <Link href="/run-test">
+            <Link href="/run-test" className="hover:font-bold">
               Run test
             </Link>
           </nav>
