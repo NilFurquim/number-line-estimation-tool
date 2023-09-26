@@ -6,7 +6,7 @@ import React from 'react';
 const Config: React.FC = () => {
     return (
       <div>
-        <div className="bg-gray-200 p-4 rounded-md">
+        <div className="bg-gray-200 p-4 rounded-md mx-5 mt-5">
           {/* Add your configuration options here */}
           <div className="mb-4">
             <label htmlFor="config-input-tester-id" className="block text-gray-700 font-bold mb-2">
