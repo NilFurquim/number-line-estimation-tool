@@ -7,11 +7,16 @@ const DrawingCanvas: React.FC = () => {
   let [drawing, setDrawing] = useState<boolean>(false);
   let [currentLine, setCurrentLine] = useState<{ x: number; y: number }[]>([]);
   const [allLines, setAllLines] = useState<{ x: number; y: number }[][]>([]);
+  let windowSize = [800, 600];
 
   useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
-
+    windowSize = [800, 600];
+    if (typeof window !== 'undefined') {
+        windowSize = [window.innerWidth, window.innerHeight];
+    }
+    
     if (!canvas || !context) {
         return;
       }
@@ -166,8 +171,8 @@ const DrawingCanvas: React.FC = () => {
             <div className=''>
                 <canvas
                 ref={canvasRef}
-                width={window.innerWidth}
-                height={window.innerHeight * 0.5}>
+                width={windowSize[0]}
+                height={windowSize[1] * 0.5}>
                 </canvas>    
             </div>
         </div>
